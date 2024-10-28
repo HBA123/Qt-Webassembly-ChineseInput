@@ -36,7 +36,7 @@ InstalledDir: E:\emsdk-main\upstream\bin
 在`编辑`->`preferences`->`设备`->`WebAssembly`路径下，点击`浏览`导入`emsdk-main`根目录，点击`应用`与`确定`就行了
 
 ## 安装中文字体
-首先需要下载中文字体库（.ttf或.otf格式）。由于需要用于网络传输，其大小不能太大，最好在几MB左右  
+首先需要下载中文字体库（.ttf或.otf格式）。由于需要用于网络传输，其大小不能太大，最好在几MB左右（太大的字体库不能加载，巨坑）  
 可以使用我上面提供的Tiny字体库中的一个  
 
 在创建的项目中，右键添加新文件，选择Qt Resource File进行添加：
@@ -60,4 +60,4 @@ InstalledDir: E:\emsdk-main\upstream\bin
 #include <QFontDatabase>
 ```
 
-之后编译webassembly应用，即可显示、输入中文
+之后编译webassembly应用，即可在浏览器显示、输入中文
