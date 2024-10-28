@@ -22,6 +22,34 @@ Target: wasm32-unknown-emscripten
 Thread model: posix
 InstalledDir: E:\emsdk-main\upstream\bin
 ```
+## QtCreator配置
+提前安装好Python，最新版的就行  
+
+在`编辑`->`preferences`->`设备`->`WebAssembly`路径下，点击`浏览`导入`emsdk-main`根目录，点击`应用`与`确定`就行了
 
 ## 安装中文字体
-首先需要下载中文字体库（.ttf格式）。由于需要用于网络传输，其大小不能太大，最好在几MB左右
+首先需要下载中文字体库（.ttf或.otf格式）。由于需要用于网络传输，其大小不能太大，最好在几MB左右  
+可以使用我上面提供的Tiny字体库中的一个  
+
+在创建的项目中，右键添加新文件，选择Qt Resource File进行添加：
+![image](https://github.com/user-attachments/assets/bd73b503-a31d-42ba-aa31-843b708a8f96)
+
+之后，将选择的ttf字体库文件拷贝到项目相同的根目录下，即与main.cpp等文件同一级，确保绝对路径或者相对路径没有中文  
+在QtCreator中，右键.qrc文件，点击添加现有文件，选择.ttf文件  
+
+在main.cpp中，添加如下代码：
+```cpp
+    int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/hei.TTF"));
+    QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
+    if (fontFamilies.size() > 0) {
+        QFont font;
+        font.setFamily(fontFamilies[0]);
+        a.setFont(font);
+    }
+```
+记得添加头文件：
+```cpp
+#include <QFontDatabase>
+```
+
+之后编译webassembly应用，即可显示、输入中文
