@@ -1,5 +1,13 @@
 # Qt for Webassembly的中文输入
+本人环境
+* windows11操作系统
+* Qt版本6.8.0，QtCreator版本14.0.2
+
+由于wasm技术是基于浏览器显示的，突出一个跨平台技术，故可以就在win环境下编写、编译、打包，之后在Linux操作系统（有浏览器）下也可以运行
+
 ## Emscripten的安装
+
+
 源码下载：
   
     git clone https://github.com/emscripten-core/emsdk
