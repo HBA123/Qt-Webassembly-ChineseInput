@@ -17,10 +17,14 @@ cd到下载的源码的根目录下`cd emsdk`
 顺序输入如下命令，进行激活、设置到环境变量中:
 ```
 emsdk update #更新
-emsdk install --global latest # 安装
-emsdk activate latest # 激活
+emsdk install --global 3.1.56 # emsdk的版本要与Qt版本对应
+emsdk activate 3.1.56 # 激活
 emsdk_env.bat # 设置到环境变量中
 ```
+查看Qt与emsdk版本对应的[网站](https://doc.qt.io/qt-6/wasm.html#fonts)  
+![image](https://github.com/user-attachments/assets/5fb01448-a6d4-4aab-94fa-694f600f22a9)  
+我在windows上安装的Qt是6.8.0，故选择安装与激活的emsdk的版本为3.1.56
+
 
 之后输入`emcc -v`命令查看，如果有下面类似的输出说明安装正确：
 ```
