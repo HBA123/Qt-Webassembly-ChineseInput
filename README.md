@@ -51,7 +51,7 @@ InstalledDir: E:\emsdk-main\upstream\bin
 
 在`main.cpp`中，添加如下代码：
 ```cpp
-    int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/hei.TTF"));
+    int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/hei.TTF"));  // 此处索引到你添加的.ttf文件
     QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
     if (fontFamilies.size() > 0) {
         QFont font;
