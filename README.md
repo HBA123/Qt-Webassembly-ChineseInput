@@ -43,13 +43,13 @@ InstalledDir: E:\emsdk-main\upstream\bin
 首先需要下载中文字体库（.ttf或.otf格式）。由于需要用于网络传输，其大小不能太大，最好在几MB左右（太大的字体库不能加载，巨坑）  
 可以使用我上面提供的Tiny字体库中的一个  
 
-在创建的项目中，右键添加新文件，选择Qt Resource File进行添加：
+在创建的项目中，右键添加新文件，选择Qt Resource File添加资源文件（如果项目中已经有了.qrc文件可以略去这一步）：
 ![image](https://github.com/user-attachments/assets/bd73b503-a31d-42ba-aa31-843b708a8f96)
 
-之后，将选择的ttf字体库文件拷贝到项目相同的根目录下，即与main.cpp等文件同一级，确保绝对路径或者相对路径没有中文  
+之后，将选择的ttf字体库文件拷贝到项目相同的根目录下，即与`main.cpp`等文件同一级，确保绝对路径或者相对路径没有中文  
 在QtCreator中，右键.qrc文件，点击添加现有文件，选择.ttf文件  
 
-在main.cpp中，添加如下代码：
+在`main.cpp`中，添加如下代码：
 ```cpp
     int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/hei.TTF"));
     QStringList fontFamilies = QFontDatabase::applicationFontFamilies(fontId);
@@ -59,9 +59,25 @@ InstalledDir: E:\emsdk-main\upstream\bin
         a.setFont(font);
     }
 ```
-记得添加头文件：
+记得在`main.cpp`中添加头文件：
 ```cpp
 #include <QFontDatabase>
 ```
 
+之后修改`CmakeLists.txt`文件，添加代码：
+
+    set(CMAKE_AUTORCC ON)
+  
+还是在`CmakeLists.txt`文件中，在`set(PROJECT_SOURCES ... )`里面添加之前新建的.qrc文件，比如：
+```
+set(PROJECT_SOURCES
+        main.cpp
+        mainwindow.cpp
+        mainwindow.h
+        mainwindow.ui
+        # ${TS_FILES}
+        font.qrc
+)
+```
+修改完后记得保存  
 之后编译webassembly应用，即可在浏览器显示、输入中文
