@@ -36,6 +36,7 @@ InstalledDir: E:\emsdk-main\upstream\bin
 ```
 ## QtCreator配置
 提前安装好Python，最新版的就行，记得配置好系统环境变量  
+我安装的Python是3.9版本，如果最新版报错可以删除后下载低版本的  
 
 在`编辑`->`preferences`->`设备`->`WebAssembly`路径下，点击`浏览`导入`emsdk-main`根目录，点击`应用`与`确定`就行了
 
